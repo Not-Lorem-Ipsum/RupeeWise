@@ -1,0 +1,211 @@
+/* General styling */
+body {
+    font-family: 'Poppins', sans-serif;
+    background : url('bg_1.webp') no-repeat center center fixed;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+    overflow: hidden;
+    position: relative;
+}
+
+/* Darker overlay to reduce background distraction */
+body::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.75); /* More darkened to shift focus to chat */
+    z-index: -1;
+}
+
+/* Chat container */
+.chat-container {
+    width: 65vw; /* Increased size */
+    height: 75vh; /* Increased size */
+    background: rgba(20, 23, 28, 0.98); /* Darker and high opacity to stand out */
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    backdrop-filter: blur(10px);
+    color: #f5f5f5;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+/* Chat box */
+.chat-box {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 10px;
+}
+
+/* Scrollbar styling */
+.chat-box::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background: #777;
+    border-radius: 10px;
+}
+
+/* User and bot messages */
+.user-message, .bot-message {
+    padding: 14px 20px;
+    border-radius: 18px;
+    max-width: 70%;
+    font-size: 16px;
+    line-height: 1.6;
+    animation: fadeIn 0.3s ease-in-out;
+}
+
+/* User message */
+.user-message {
+    background: #4A90E2;
+    color: white;
+    align-self: flex-end;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+/* Bot message */
+.bot-message {
+    background: rgba(255, 255, 255, 0.15);
+    color: #f5f5f5;
+    align-self: flex-start;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+}
+
+/* Bot message (long response) */
+.bot-message.long-response {
+    background: rgba(255, 255, 255, 0.2);
+    border-left: 5px solid #4A90E2;
+    padding: 16px;
+    max-width: 80%;
+    font-size: 17px;
+    line-height: 1.7;
+}
+
+/* Input section */
+.input-container {
+    display: flex;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.05);
+    border-top: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+input[type="text"] {
+    flex: 1;
+    padding: 14px;
+    font-size: 17px;
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: 25px;
+    outline: none;
+    transition: 0.3s ease-in-out;
+    background: rgba(255, 255, 255, 0.15);
+    color: #f5f5f5;
+}
+
+input[type="text"]:focus {
+    border-color: #4A90E2;
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+}
+
+/* Buttons */
+button {
+    background-color: #4A90E2; /* Match user message color */
+    color: white;
+    border: none;
+    padding: 12px 16px;
+    margin-left: 10px;
+    border-radius: 20px;
+    cursor: pointer;
+    transition: 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 15px;
+    font-weight: bold;
+}
+
+button:hover {
+    background-color: #357ABD;
+    box-shadow: 0 3px 8px rgba(0, 0, 0, 0.3);
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: flex-start;
+    gap: 10px;
+    padding: 10px;
+}
+
+/* Smaller History and New Chat Buttons */
+.icon-button {
+    width: 35px;
+    height: 35px;
+    padding: 5px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.icon-button img {
+    width: 20px;
+    height: 20px;
+}
+
+/* History container */
+.history-container {
+    width: 30vw;
+    height: 75vh;
+    background: rgba(15, 18, 24, 0.95);
+    border-radius: 20px;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, 0.4);
+    overflow-y: auto;
+    backdrop-filter: blur(10px);
+    color: #f5f5f5;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    padding: 15px;
+    display: none;
+    position: absolute;
+    right: 10px;
+    top: 50%;
+    transform: translateY(-50%);
+}
+
+.history-message {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    border-radius: 10px;
+    margin-bottom: 10px;
+    font-size: 14px;
+    line-height: 1.6;
+}
+
+.history-container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.history-container::-webkit-scrollbar-thumb {
+    background: #777;
+    border-radius: 10px;
+}
+
+/* Animation for message appearance */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
