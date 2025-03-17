@@ -1,8 +1,11 @@
 from flask import Flask, render_template, request, jsonify
+import numpy as np
+import pandas as pd
 import google.generativeai as genai
 import os
 import warnings
 from dotenv import load_dotenv
+
 
 # Load environment variables from .env file
 load_dotenv()
@@ -24,8 +27,8 @@ app = Flask(__name__)
 
 def is_finance_related(message):
     """Check if the message is related to finance."""
-    finance_keywords = ["hi", "hello", "finance", "money", "capita", "investment", "stocks", "banking", "crypto", "loan", "interest", "trading",
-                        "budget"]
+    df = pd.read_csv("data/finance_keywords.csv", header=None)
+    finance_keywords = pd.Series(df[0])
     return any(keyword in message.lower() for keyword in finance_keywords)
 
 
