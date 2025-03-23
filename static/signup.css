@@ -1,0 +1,161 @@
+/* Body styling */
+body {
+    background-image: url("bg_2.webp");
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    font-family: Arial, sans-serif;
+    position: relative;
+    overflow: hidden; /* Prevents scrolling */
+}
+
+/* Welcome text */
+.welcome-text {
+    position: absolute;
+    top: 80px;
+    left: 200px;
+    font-size: 52px;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+    animation: fadeIn 1.5s ease-in-out;
+    background: linear-gradient(45deg, #679ad4, #3075b9);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: transform 0.3s ease-in-out;
+}
+
+/* Hover effect for Welcome text */
+.welcome-text:hover {
+    transform: scale(1.05);
+}
+
+/* Container for the login form */
+.signup-container {
+    background-color: #ffffff;
+    border-radius: 10px;
+    box-shadow: 0 4px 20px rgba(66, 59, 59, 0.1);
+    padding: 30px;
+    width: 320px;
+    text-align: center;
+    position: relative;
+    margin-left: 650px;
+    opacity: 0;
+    animation: slideUp 1s ease-out forwards;
+}
+
+/* Header */
+h2 {
+    text-align: center;
+    color: #4A90E2;
+    font-family: 'Roboto', sans-serif;
+    font-size: 30px;
+    font-weight: bold;
+}
+
+/* Input fields */
+input[type="text"],
+input[type="password"] {
+    width: 280px;
+    height: 50px;
+    border-radius: 32.8px;
+    padding: 5px 15px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    font-size: 16px;
+    transition: border 0.3s ease-in-out, box-shadow 0.3s ease-in-out;
+}
+
+/* Input field focus effect */
+input[type="text"]:focus,
+input[type="password"]:focus {
+    border: 1px solid #4A90E2;
+    box-shadow: 0 0 10px rgba(74, 144, 226, 0.5);
+    outline: none;
+}
+
+
+/* Login button */
+button {
+    background-color: #4A90E2;
+    color: white;
+    padding: 10px;
+    height: 60px;
+    width: 90%;
+    border: none;
+    border-radius: 30px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+    margin-top: 30px;
+    transition: background-color 0.3s ease-in-out, transform 0.2s ease-in-out;
+}
+
+/* Button hover effect */
+button:hover {
+    background-color: #357ABD;
+    transform: scale(1.05);
+}
+
+/* Footer links */
+.footer-links {
+    text-align: center;
+    margin-top: 15px;
+    font-size: 14px;
+}
+
+/* Footer link hover effect */
+.footer-links a {
+    color: #4A90E2;
+    text-decoration: none;
+    transition: color 0.3s ease-in-out;
+}
+
+.footer-links a:hover {
+    color: #357ABD;
+    text-decoration: underline;
+}
+
+/* Keyframes for smooth animations */
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes slideUp {
+    from {
+        opacity: 0;
+        transform: translateY(50px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.alert {
+    padding: 10px;
+    margin: 10px 0;
+    border-radius: 5px;
+    font-size: 16px;
+    text-align: center;
+}
+
+.alert.success {
+    background-color: #d4edda;
+    color: #155724;
+    border: 1px solid #c3e6cb;
+}
+
+.alert.error {
+    background-color: #f8d7da;
+    color: #721c24;
+    border: 1px solid #f5c6cb;
+}

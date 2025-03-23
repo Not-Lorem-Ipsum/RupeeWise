@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>FinBot</title>
-    <link rel="stylesheet" href="../static/styles.css">
+    <link rel="stylesheet" href="{{url_for('static', filename='style.css')}}">
+    <link rel="icon" type="image/x-icon" href="{{url_for('static', filename='finbot.ico')}}">
+
     <script>
         function sendMessage() {
             let userInput = document.getElementById("user-input");
@@ -48,6 +50,10 @@
             });
         }
 
+        function goToHome() {
+            window.location.href = "{{ url_for('home') }}";
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("user-input").addEventListener("keypress", function(event) {
                 if (event.key === "Enter") {
@@ -59,17 +65,28 @@
 </head>
 <body>
     <div class="chat-container">
+        <!-- Home button in the top-left corner -->
+        <div class="chat-header">
+        <!-- New Chat & History Buttons -->
         <div class="button-container">
+            <button class="icon-button" onclick="goToHome()">
+                <img src="{{url_for('static', filename='home.png')}}" alt="Home">
+            </button>
             <button onclick="newChat()" class="icon-button">
-                <img src="../static/new_chat.png" alt="New Chat">
+                <img src="{{url_for('static', filename='new_chat.png')}}" alt="New Chat">
             </button>
             <button onclick="showHistory()" class="icon-button">
-                <img src="../static/history.png" alt="History">
+                <img src="{{url_for('static', filename='history.png')}}" alt="History">
             </button>
         </div>
+        </div>
+
+        <!-- Chat Box -->
         <div id="chat-box" class="chat-box"></div>
+
+        <!-- Input Field -->
         <div class="input-container">
-            <input type="text" id="user-input" placeholder="Type a message..." autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false">
+            <input type="text" id="user-input" placeholder="Type a message..." autocomplete="off">
             <button onclick="sendMessage()">Send</button>
         </div>
     </div>

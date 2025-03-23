@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SignUp Page</title>
+    <link rel="stylesheet" href="{{url_for('static',filename='signup.css')}}">
+    <br>
+</head>
+<body>
+    <div class="welcome-text">Welcome to <span>FinBot</span></div>
+    <br>
+    <div class="signup-container">
+        <h2>SignUp</h2>
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert {{ category }}">{{ message }}</div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+        <form action="/signup" method="post" autocomplete="off">
+            <input type="text" placeholder="Name" name="name"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+            <input type="text" placeholder="Email address" name="email"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+            <input type="password" placeholder="Password" name="password"
+            autocomplete="off" autocorrect="off" autocapitalize="off" spellcheck="false" required>
+            <br>
+            <button type="submit">Sign Up</button>
+            <!-- <label class="checkbox">
+                <input type="checkbox" name="remember"> Remember Password
+            </label> -->
+        </form>
+        <div class="footer-links">
+            Already have an account? <a href="{{url_for('login')}}">Login here</a>
+        </div>
+    </div>
+</body>
+</html>
