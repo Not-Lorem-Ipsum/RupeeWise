@@ -78,8 +78,8 @@
             <button onclick="showHistory()" class="icon-button">
                 <img src="{{url_for('static', filename='history.png')}}" alt="History">
             </button>
-            <button onclick="window.open('faq.html', '_blank')" class = "icon-button">
-                <img src="{{url_for('static', filename='quiz.png')}}" alt="FAQ">
+            <button onclick="window.location.href='templates/faq.html'" class="icon-button">
+                <img src="path/to/quiz.png" alt="FAQ">
             </button>
         </div>
         </div>
@@ -95,4 +95,5 @@
     </div>
     <div id="history-container" class="history-container" style="display: none;"></div>
 </body>
+
 </html>
