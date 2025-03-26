@@ -117,10 +117,6 @@ def chat_with_bot():
     """
     user_message = request.json.get("message")
 
-    # Exit chat
-    if user_message.lower() in ["quit", "bye", "exit"]:
-        return jsonify({"response": "Goodbye!"})
-
     # Show chat history
     if user_message.lower() == "history":
         return jsonify({"response": str(chat.history)})
