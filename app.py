@@ -89,7 +89,7 @@ def signup():
         password = request.form['password']
 
         # Validate email format
-        if '@' not in email:
+        if '@' and '.' not in email:
             flash("Incorrect email address.", "error")
             return redirect(url_for('signup'))
 
@@ -107,7 +107,7 @@ def signup():
         else:
             # Store user data in session
             session['users'][username] = {"email": email, "password": password}
-            session.modified = True  # Mark session as modified
+            session.modified = True     # Mark session as modified
             flash(f"Account created successfully! Your username is '{username}'. Please log in.", "success")
             return redirect(url_for('login'))
 
@@ -123,7 +123,7 @@ def chat_with_bot():
     """
     user_message = request.json.get("message")
 
-    # Exit chat
+    # Goodbye for exiting user message
     if user_message.lower() in ["quit", "bye", "exit"]:
         return jsonify({"response": "Goodbye!"})
 
@@ -135,10 +135,10 @@ def chat_with_bot():
     if not is_finance_related(user_message):
         return jsonify({"response": "Please ask finance-related questions only."})
 
-    # Generate AI response
+    # Generating AI response
     response = chat.send_message(user_message)
     return jsonify({"response": response.text})
 
 if __name__ == '__main__':
-    # Run the Flask application in debug mode
+    # Runing the Flask application in debug mode
     app.run(debug=True)
