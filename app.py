@@ -45,6 +45,12 @@ def home():
     """Render the home page."""
     return render_template('home.html')
 
+@app.route('/faq', methods=['GET','POST'])
+def faq():
+    if request.method=='POST':
+        return render_template('ChatBot.html')
+    return render_template('faq.html')
+
 @app.route('/login', methods=['GET', 'POST'])
 def login():
     """
@@ -117,6 +123,10 @@ def chat_with_bot():
     """
     user_message = request.json.get("message")
 
+    # Exit chat
+    if user_message.lower() in ["quit", "bye", "exit"]:
+        return jsonify({"response": "Goodbye!"})
+
     # Show chat history
     if user_message.lower() == "history":
         return jsonify({"response": str(chat.history)})
@@ -131,4 +141,4 @@ def chat_with_bot():
 
 if __name__ == '__main__':
     # Run the Flask application in debug mode
-    app.run(debug=True,host='0.0.0.0', port=8080)
+    app.run(debug=True)

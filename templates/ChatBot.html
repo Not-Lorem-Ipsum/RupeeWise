@@ -54,6 +54,10 @@
             window.location.href = "{{ url_for('home') }}";
         }
 
+        function goToFaq() {
+            window.location.href = "{{ url_for('faq') }}";
+        }
+
         document.addEventListener("DOMContentLoaded", function() {
             document.getElementById("user-input").addEventListener("keypress", function(event) {
                 if (event.key === "Enter") {
@@ -78,8 +82,8 @@
             <button onclick="showHistory()" class="icon-button">
                 <img src="{{url_for('static', filename='history.png')}}" alt="History">
             </button>
-            <button onclick="window.location.href='templates/faq.html'" class="icon-button">
-                <img src="path/to/quiz.png" alt="FAQ">
+            <button onclick="goToFaq()" class="icon-button">
+                <img src="{{url_for('static',filename='faq.png')}}" alt="FAQ">
             </button>
         </div>
         </div>
@@ -95,5 +99,4 @@
     </div>
     <div id="history-container" class="history-container" style="display: none;"></div>
 </body>
-
 </html>
