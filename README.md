@@ -65,7 +65,7 @@ With RupeeWise, users can:
 | 🌐 Backend  | Python, Flask        |
 | 🎨 Frontend | HTML, CSS, JS        |
 | ☁️ Hosting  | PythonAnywhere       |
-| 🔐 Security | Encrypted data handling (future update) |
+| 🔐 Security | Encrypted data handling |
 
 ---
 
